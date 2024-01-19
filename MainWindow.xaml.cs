@@ -33,44 +33,46 @@ namespace natureofcode_wpf
 
         private void canvas_Loaded(object sender, RoutedEventArgs e)
         {
-            scenario = new ScenarioRandomWalker8Directions(canvas);
+            scenario = new ScenarioRandomNumberDistribution(canvas);
+
         }
 
         private async void bStartAnimation_Click(object sender, RoutedEventArgs e)
-{
-    if (!animated) { 
-        animated = true; 
-        scenario?.Draw();
-        await Loop();
-    }
-}
+        {
+            if (!animated)
+            {
+                animated = true;
+                scenario?.Draw();
+                await Loop();
+            }
+        }
 
-private void bStopAnimation_Click(object sender, RoutedEventArgs e)
-{
-    animated = false; 
-    canvas.Children.Clear();
-}
+        private void bStopAnimation_Click(object sender, RoutedEventArgs e)
+        {
+            animated = false;
+            canvas.Children.Clear();
+        }
 
-public async Task Loop()
-{
+        public async Task Loop()
+        {
 
-    Stopwatch stopwatch = new Stopwatch();
-    stopwatch.Start();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
 
-    while (animated)
-    {
-        await Task.Delay(50);
+            while (animated)
+            {
+                await Task.Delay(50);
 
-        long elapsedMs = stopwatch.ElapsedMilliseconds;
-        stopwatch.Restart();
+                long elapsedMs = stopwatch.ElapsedMilliseconds;
+                stopwatch.Restart();
 
-        //Debug.WriteLine($"Loop Random Walker {elapsedMs}");
+                //Debug.WriteLine($"Loop Random Walker {elapsedMs}");
 
-        scenario?.Update(elapsedMs);
+                scenario?.Update(elapsedMs);
 
-    }
+            }
 
-    Debug.WriteLine($"Fin loop random walker");
-}
+            Debug.WriteLine($"Fin loop random walker");
+        }
     }
 }
