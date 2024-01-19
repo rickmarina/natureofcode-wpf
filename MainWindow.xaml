@@ -1,0 +1,21 @@
+﻿<Window x:Class="natureofcode_wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:natureofcode_wpf"
+        mc:Ignorable="d"
+        Title="NatureOfCode" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Start" Width="100" Height="25" Click="bStartAnimation_Click" ></Button>
+            <Button Content="Stop" Width="100" Height="25" Click="bStopAnimation_Click" ></Button>
+        </StackPanel>
+
+        <Canvas Grid.Row="1" x:Name="canvas" Background="Beige" Loaded="canvas_Loaded"></Canvas>
+    </Grid>
+</Window>
