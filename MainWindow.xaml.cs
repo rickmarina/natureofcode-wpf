@@ -33,7 +33,7 @@ namespace natureofcode_wpf
 
         private void canvas_Loaded(object sender, RoutedEventArgs e)
         {
-            scenario = new ScenarioRandomWalker(canvas);
+            scenario = new ScenarioRandomWalker8Directions(canvas);
         }
 
         private async void bStartAnimation_Click(object sender, RoutedEventArgs e)
