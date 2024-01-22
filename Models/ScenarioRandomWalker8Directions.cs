@@ -19,6 +19,8 @@ public class ScenarioRandomWalker8Directions : IScenario
     private double currentX;
     private double currentY;
 
+    public string GetTitle() => "Random Walker 8-directions";
+
     public ScenarioRandomWalker8Directions(Canvas canvas)
     {
         _canvas = canvas;

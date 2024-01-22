@@ -18,6 +18,7 @@ public class ScenarioRandomWalker : IScenario
 
     private double currentX;
     private double currentY;
+    public string GetTitle() => "Random Walker";
 
     public ScenarioRandomWalker(Canvas canvas)
     {

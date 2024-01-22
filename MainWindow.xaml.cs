@@ -34,6 +34,7 @@ namespace natureofcode_wpf
         private void canvas_Loaded(object sender, RoutedEventArgs e)
         {
             scenario = new ScenarioRandomNumberDistribution(canvas);
+            this.Title = $"Nature of code [{scenario.GetTitle()}]";
 
         }
 

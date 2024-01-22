@@ -19,6 +19,7 @@ public class ScenarioRandomNumberDistribution : IScenario
 
     private const int TOTAL = 20;
 
+    public string GetTitle() => "Random Number Distribution";
 
     public ScenarioRandomNumberDistribution(Canvas canvas)
     {
@@ -64,17 +65,7 @@ public class ScenarioRandomNumberDistribution : IScenario
     }
 
 
-    private SolidColorBrush GenerateRandomColorBrush()
-    {
-        Random rnd = new Random();
-        byte[] rgb = new byte[3];
-        rnd.NextBytes(rgb);
+    
 
-        Color randomColor = Color.FromRgb(rgb[0], rgb[1], rgb[2]);
-        SolidColorBrush randomColorBrush = new SolidColorBrush(randomColor);
-
-        return randomColorBrush;
-    }
-
- 
+    
 }
