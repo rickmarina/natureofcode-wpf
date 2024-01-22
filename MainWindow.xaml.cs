@@ -33,8 +33,7 @@ namespace natureofcode_wpf
 
         private void canvas_Loaded(object sender, RoutedEventArgs e)
         {
-            scenario = new ScenarioRandomNumberDistribution(canvas);
-            this.Title = $"Nature of code [{scenario.GetTitle()}]";
+            
 
         }
 
@@ -43,6 +42,8 @@ namespace natureofcode_wpf
             if (!animated)
             {
                 animated = true;
+                scenario = new ScenarioRandomWalkerRight(canvas);
+                this.Title = $"Nature of code [{scenario.GetTitle()}]";
                 scenario?.Draw();
                 await Loop();
             }
