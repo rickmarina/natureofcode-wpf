@@ -8,24 +8,15 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using NatureOfCode.Models;
-public class ScenarioRandomWalkerRight : IScenario
+public class ScenarioRandomWalkerRight : ScenarioBase, IScenario
 {
 
     private Polyline _poly;
-    private readonly Canvas _canvas;
-    private readonly int _width;
-    private readonly int _height;
-
     private double currentX;
     private double currentY;
-    public string GetTitle() => "Random Walker Tends to Move to the right";
 
-    public ScenarioRandomWalkerRight(Canvas canvas)
+    public ScenarioRandomWalkerRight(Canvas canvas) : base(canvas, "Random Walker Tends to Move to the right")
     {
-        _canvas = canvas;
-        this._width = Convert.ToInt32(canvas.ActualWidth);
-        this._height = Convert.ToInt32(canvas.ActualHeight);
-
         currentX = _width / 2;
         currentY = _height / 2;
 
@@ -49,7 +40,8 @@ public class ScenarioRandomWalkerRight : IScenario
             < 0.4 => currentX++,
             < 0.6 => currentX--,
             < 0.8 => currentY++,
-            < 1 => currentY--
+            < 1 => currentY--,
+            _ => 0
         };
 
         _poly.Points.Add(new System.Windows.Point(currentX, currentY));

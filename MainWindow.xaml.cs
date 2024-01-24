@@ -39,10 +39,12 @@ namespace natureofcode_wpf
 
         private async void bStartAnimation_Click(object sender, RoutedEventArgs e)
         {
+            Console.WriteLine($"Initializing animation..");
+
             if (!animated)
             {
                 animated = true;
-                scenario = new ScenarioRandomWalkerRight(canvas);
+                scenario = new ScenarioPerlinNoiseWalker(canvas);
                 this.Title = $"Nature of code [{scenario.GetTitle()}]";
                 scenario?.Draw();
                 await Loop();
@@ -63,7 +65,7 @@ namespace natureofcode_wpf
 
             while (animated)
             {
-                await Task.Delay(50);
+                await Task.Delay(15);
 
                 long elapsedMs = stopwatch.ElapsedMilliseconds;
                 stopwatch.Restart();
@@ -74,7 +76,7 @@ namespace natureofcode_wpf
 
             }
 
-            Debug.WriteLine($"Fin loop random walker");
+            Debug.WriteLine($"Fin loop");
         }
     }
 }

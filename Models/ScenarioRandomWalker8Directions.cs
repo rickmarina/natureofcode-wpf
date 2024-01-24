@@ -8,25 +8,15 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using NatureOfCode.Models;
-public class ScenarioRandomWalker8Directions : IScenario
+public class ScenarioRandomWalker8Directions : ScenarioBase, IScenario
 {
 
     private Polyline _poly;
-    private readonly Canvas _canvas;
-    private readonly int _width;
-    private readonly int _height;
-
     private double currentX;
     private double currentY;
 
-    public string GetTitle() => "Random Walker 8-directions";
-
-    public ScenarioRandomWalker8Directions(Canvas canvas)
+    public ScenarioRandomWalker8Directions(Canvas canvas) : base(canvas, "Random Walker 8-directions")
     {
-        _canvas = canvas;
-        this._width = Convert.ToInt32(canvas.ActualWidth);
-        this._height = Convert.ToInt32(canvas.ActualHeight);
-
         currentX = _width / 2;
         currentY = _height / 2;
 

@@ -9,14 +9,14 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Xml.Schema;
 using NatureOfCode.Models;
-public class ScenarioRandomNumberDistribution : ScenarioBase, IScenario
+public class ScenarioRandomAceptRejectDistribution : ScenarioBase, IScenario
 {
 
     private List<Rectangle> _rects;
 
     private const int TOTAL = 20;
 
-    public ScenarioRandomNumberDistribution(Canvas canvas) : base(canvas, "Random Number Distribution")
+    public ScenarioRandomAceptRejectDistribution(Canvas canvas) : base(canvas, "Random Number Accept-Reject Distribution")
     {
         _rects = new();        
         for (int i = 0; i < TOTAL; i++)
@@ -24,7 +24,7 @@ public class ScenarioRandomNumberDistribution : ScenarioBase, IScenario
 
             var r = new Rectangle() { 
                     Width= this._width/TOTAL, 
-                    Height=50, 
+                    Height=0, 
                     Fill = Brushes.LightGray,
                     Stroke = Brushes.Black,
                     StrokeThickness = 2
@@ -46,9 +46,23 @@ public class ScenarioRandomNumberDistribution : ScenarioBase, IScenario
             this._canvas.Children.Add(r);
     }
 
+    public double AcceptRejectRandom() { 
+        while (true) {
+            double r1 = Random.Shared.NextDouble(); 
+            double r2 = Random.Shared.NextDouble(); 
+
+            if (r2 < r1) 
+                return r1; 
+
+        }
+    }
+
     public void Update(long delta)
     {
-        int idx = Random.Shared.Next(TOTAL);
+        
+        //int idx = Random.Shared.Next(TOTAL);
+
+        int idx = (int)(AcceptRejectRandom()*TOTAL);
 
         this._rects[idx].Height++;
 
