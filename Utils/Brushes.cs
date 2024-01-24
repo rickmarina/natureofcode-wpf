@@ -6,6 +6,7 @@ public class Brushes
 
     public static SolidColorBrush White => new SolidColorBrush(Colors.White);
     public static SolidColorBrush Black => new SolidColorBrush(Colors.Black);
+    public static SolidColorBrush BlackAlfa(double alfa) => new SolidColorBrush(Color.FromArgb((byte)alfa, 0,0,0));
     public static SolidColorBrush LightGray => new SolidColorBrush(Colors.LightGray);
 
     public static SolidColorBrush Random()

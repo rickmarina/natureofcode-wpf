@@ -16,6 +16,6 @@
             <Button Content="Stop" Width="100" Height="25" Click="bStopAnimation_Click" ></Button>
         </StackPanel>
 
-        <Canvas Grid.Row="1" x:Name="canvas" Background="Beige" Loaded="canvas_Loaded"></Canvas>
+        <Canvas Grid.Row="1" x:Name="canvas" Loaded="canvas_Loaded"></Canvas>
     </Grid>
 </Window>

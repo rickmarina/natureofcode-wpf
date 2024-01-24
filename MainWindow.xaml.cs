@@ -44,7 +44,7 @@ namespace natureofcode_wpf
             if (!animated)
             {
                 animated = true;
-                scenario = new ScenarioPerlinNoiseWalker(canvas);
+                scenario = new ScenarioPerlinNoise2D(canvas);
                 this.Title = $"Nature of code [{scenario.GetTitle()}]";
                 scenario?.Draw();
                 await Loop();
