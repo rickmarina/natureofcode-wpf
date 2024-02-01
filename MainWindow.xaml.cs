@@ -44,7 +44,7 @@ namespace natureofcode_wpf
             if (!animated)
             {
                 animated = true;
-                scenario = new ScenarioVectorsMultiplying(canvas); // <---- Scenario
+                scenario = new ScenarioPerlinNoiseWalker(canvas); // <---- Scenario
                 this.Title = $"Nature of code [{scenario.GetTitle()}]";
                 scenario?.Draw();
                 await Loop();
@@ -88,6 +88,22 @@ namespace natureofcode_wpf
             }
 
             Debug.WriteLine($"Fin loop");
+        }
+
+        private void bScreenshot_Click(object sender, RoutedEventArgs e)
+        {
+            RenderTargetBitmap rtb = new RenderTargetBitmap((int)this.RenderSize.Width,(int)this.RenderSize.Height, 96d, 96d, System.Windows.Media.PixelFormats.Default);    
+            rtb.Render(this);
+
+            var crop = new CroppedBitmap(rtb, new Int32Rect(0, 0, (int)this.RenderSize.Width, (int)this.RenderSize.Height));
+
+            BitmapEncoder pngEncoder = new PngBitmapEncoder();
+            pngEncoder.Frames.Add(BitmapFrame.Create(crop));
+
+            using (var fs = System.IO.File.OpenWrite($"screenshot_{DateTime.UtcNow.ToFileTime()}.png"))
+            {
+                pngEncoder.Save(fs);
+            }
         }
     }
 }
