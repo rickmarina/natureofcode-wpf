@@ -11,12 +11,12 @@
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" Background="DarkGoldenrod">
             <Button Content="Start" Width="100" Height="25" Click="bStartAnimation_Click" ></Button>
             <Button Content="Stop" Width="100" Height="25" Click="bStopAnimation_Click" ></Button>
             <Button Content="Screenshot" Width="100" Height="25" Click="bScreenshot_Click"></Button>
         </StackPanel>
 
-        <Canvas Grid.Row="1" x:Name="canvas" Loaded="canvas_Loaded"></Canvas>
+        <Canvas Grid.Row="1" x:Name="canvas" Loaded="canvas_Loaded" ClipToBounds="True"></Canvas>
     </Grid>
 </Window>

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -44,7 +45,7 @@ namespace natureofcode_wpf
             if (!animated)
             {
                 animated = true;
-                scenario = new ScenarioPerlinNoiseWalker(canvas); // <---- Scenario
+                scenario = new ScenarioVectorsMultiplying(canvas); // <---- Scenario
                 this.Title = $"Nature of code [{scenario.GetTitle()}]";
                 scenario?.Draw();
                 await Loop();
@@ -54,6 +55,7 @@ namespace natureofcode_wpf
         private void bStopAnimation_Click(object sender, RoutedEventArgs e)
         {
             animated = false;
+
             canvas.Children.Clear();
         }
 
