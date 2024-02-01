@@ -44,7 +44,7 @@ namespace natureofcode_wpf
             if (!animated)
             {
                 animated = true;
-                scenario = new ScenarioPerlinNoise2D(canvas);
+                scenario = new ScenarioVectorsSubstraction(canvas);
                 this.Title = $"Nature of code [{scenario.GetTitle()}]";
                 scenario?.Draw();
                 await Loop();
@@ -65,7 +65,7 @@ namespace natureofcode_wpf
 
             while (animated)
             {
-                await Task.Delay(15);
+                await Task.Delay(6);
 
                 long elapsedMs = stopwatch.ElapsedMilliseconds;
                 stopwatch.Restart();
