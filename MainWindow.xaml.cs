@@ -44,7 +44,7 @@ namespace natureofcode_wpf
             if (!animated)
             {
                 animated = true;
-                scenario = new ScenarioVectorsSubstraction(canvas);
+                scenario = new ScenarioVectorsMultiplying(canvas); // <---- Scenario
                 this.Title = $"Nature of code [{scenario.GetTitle()}]";
                 scenario?.Draw();
                 await Loop();
@@ -63,12 +63,23 @@ namespace natureofcode_wpf
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
+            int fps = 0;
+            long accMs = 0; 
+
             while (animated)
             {
+                fps++;
                 await Task.Delay(6);
 
                 long elapsedMs = stopwatch.ElapsedMilliseconds;
                 stopwatch.Restart();
+                accMs += elapsedMs;
+                if (accMs > 1000)
+                {
+                    this.Title = $"Nature of code [{scenario?.GetTitle()}] - fps: {fps}";
+                    fps = 0;
+                    accMs = 0; 
+                }
 
                 //Debug.WriteLine($"Loop Random Walker {elapsedMs}");
 
