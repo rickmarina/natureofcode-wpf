@@ -30,11 +30,11 @@ public class ScenarioVectorsMultiplying : ScenarioBase, IScenario
     {
         this._canvas.Children.Clear();
 
-        TranslateTransform translateCenter = new TranslateTransform(center.X, center.Y);
-        //_canvas.RenderTransform = translate;
+        TranslateTransform translateCenter = new TranslateTransform(center.X, center.Y); // Translate origin to center of canvas
 
         Vector2 mouse = new Vector2((float)Mouse.GetPosition(_canvas).X, (float)Mouse.GetPosition(_canvas).Y);
-        mouse = Vector2.Subtract(mouse, center);
+
+        mouse = Vector2.Subtract(mouse, center); //substract in order to have the vector from center of mouse location
         Line lMouse = new Line()
         {
             X1 = 0,
@@ -43,7 +43,7 @@ public class ScenarioVectorsMultiplying : ScenarioBase, IScenario
             Y2 = mouse.Y,
             StrokeThickness = 3, 
             Stroke = Brushes.LightGray,
-            RenderTransform = translateCenter
+            RenderTransform = translateCenter // origin as center of canvas
         };
         this._canvas.Children.Add(lMouse);
 
@@ -57,7 +57,7 @@ public class ScenarioVectorsMultiplying : ScenarioBase, IScenario
             Y2 = mouse.Y,
             StrokeThickness = 4,
             Stroke = Brushes.Black,
-            RenderTransform = translateCenter
+            RenderTransform = translateCenter // origin as center of canvas
         };
         this._canvas.Children.Add(lMouseMultiply);
 
