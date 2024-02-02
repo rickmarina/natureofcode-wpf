@@ -11,12 +11,14 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Xml;
 using NatureOfCode.Models;
-public class ScenarioVectorsMultiplying : ScenarioBase, IScenario
+
+
+public class ScenarioVectorsMagnitude : ScenarioBase, IScenario
 {
 
     Vector2 center;
 
-    public ScenarioVectorsMultiplying(Canvas canvas) : base(canvas,"Multiplying vectors")
+    public ScenarioVectorsMagnitude(Canvas canvas) : base(canvas,"Vector Magnitude")
     {
         center = new Vector2(_width/2, _height/2);
     }
@@ -45,20 +47,18 @@ public class ScenarioVectorsMultiplying : ScenarioBase, IScenario
         };
         this._canvas.Children.Add(lMouse);
 
-        mouse = Vector2.Multiply(mouse, 0.5f);
-
-        Line lMouseMultiply = new Line()
+        var r = new Rectangle()
         {
-            X1 = 0,
-            Y1 = 0,
-            X2 = mouse.X,
-            Y2 = mouse.Y,
-            StrokeThickness = 4,
+            Width = mouse.Length(),
+            Height = 50,
+            Fill = Brushes.LightGray,
             Stroke = Brushes.Black,
-            RenderTransform = Translate(_width / 2, _height / 2) // origin as center of canvas
+            StrokeThickness = 2
         };
-        this._canvas.Children.Add(lMouseMultiply);
+        Canvas.SetLeft(r, 0);
+        Canvas.SetTop(r, 0);
 
+        _canvas.Children.Add(r);
 
 
     }

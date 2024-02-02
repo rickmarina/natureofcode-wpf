@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 public abstract class ScenarioBase
 {
@@ -18,5 +19,6 @@ public abstract class ScenarioBase
 
     public string GetTitle() => this._title;
 
+    protected TranslateTransform Translate(double x, double y) => new TranslateTransform(x, y); // Translate origin
 
 }

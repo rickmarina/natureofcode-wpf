@@ -14,7 +14,6 @@ using NatureOfCode.Models;
 public class ScenarioVectorsSubstraction : ScenarioBase, IScenario
 {
 
-    Vector2 mouse;
     Vector2 center;
 
     public ScenarioVectorsSubstraction(Canvas canvas) : base(canvas,"Substraction vectors")
@@ -31,7 +30,7 @@ public class ScenarioVectorsSubstraction : ScenarioBase, IScenario
     {
         this._canvas.Children.Clear();
 
-        mouse = new Vector2((float)Mouse.GetPosition(_canvas).X, (float)Mouse.GetPosition(_canvas).Y);
+        Vector2 mouse = new Vector2((float)Mouse.GetPosition(_canvas).X, (float)Mouse.GetPosition(_canvas).Y);
 
         Line lMouse = new Line()
         {
