@@ -60,7 +60,6 @@ public class ScenarioVectorsMagnitude : ScenarioBase, IScenario
 
         _canvas.Children.Add(r);
 
-
     }
 
 
