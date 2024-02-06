@@ -24,5 +24,10 @@ namespace natureofcode_wpf.Utils
             v = new Vector2(Random.Shared.Next(-100, 100), Random.Shared.Next(-100, 100));
             v = Vector2.Normalize(v);
         }
+
+        public static void SetMag(this ref Vector2 v, float mag)
+        {
+            v = Vector2.Multiply(Vector2.Normalize(v), mag);
+        }
     }
 }
