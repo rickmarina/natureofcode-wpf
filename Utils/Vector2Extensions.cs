@@ -18,5 +18,11 @@ namespace natureofcode_wpf.Utils
             }
 
         }
+
+        public static void Random2D(this ref Vector2 v)
+        {
+            v = new Vector2(Random.Shared.Next(-100, 100), Random.Shared.Next(-100, 100));
+            v = Vector2.Normalize(v);
+        }
     }
 }
