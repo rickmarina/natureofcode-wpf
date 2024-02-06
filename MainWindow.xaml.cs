@@ -45,7 +45,7 @@ namespace natureofcode_wpf
             if (!animated)
             {
                 animated = true;
-                scenario = new ScenarioVectorsNormalizing(canvas); // <---- Scenario
+                scenario = new ScenarioVectorsMotion101VelocityConstantAcceleration(canvas); // <---- Scenario
                 this.Title = $"Nature of code [{scenario.GetTitle()}]";
                 scenario?.Draw();
                 await Loop();
@@ -78,13 +78,12 @@ namespace natureofcode_wpf
                 accMs += elapsedMs;
                 if (accMs > 1000)
                 {
-                    this.Title = $"Nature of code [{scenario?.GetTitle()}] - fps: {fps}";
+                    fpsValue.Content = fps;
                     fps = 0;
                     accMs = 0; 
                 }
 
-                //Debug.WriteLine($"Loop Random Walker {elapsedMs}");
-
+                //Update scenario frame
                 scenario?.Update(elapsedMs);
 
             }
