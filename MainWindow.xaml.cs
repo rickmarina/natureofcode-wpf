@@ -37,7 +37,6 @@ namespace natureofcode_wpf
             
 
         }
-
         private async void bStartAnimation_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine($"Initializing animation..");
@@ -106,5 +105,7 @@ namespace natureofcode_wpf
                 pngEncoder.Save(fs);
             }
         }
+
+        
     }
 }

@@ -51,8 +51,8 @@ public class ScenarioWindForcesBasic : ScenarioBase, IScenario
         
 
 
-        Canvas.SetLeft(ball, position.X-20);
-        Canvas.SetTop(ball, position.Y-20);
+        //Canvas.SetLeft(ball, position.X-20);
+        //Canvas.SetTop(ball, position.Y-20);
 
 
     }
