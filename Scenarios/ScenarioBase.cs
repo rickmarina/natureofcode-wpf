@@ -1,4 +1,5 @@
-﻿using System;
+﻿using natureofcode_wpf.Models;
+using System;
 using System.Diagnostics;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -9,7 +10,7 @@ public abstract class ScenarioBase
     protected readonly int _height;
     protected readonly int _width;
     protected readonly string _title;
-
+    protected Boundary boundary; 
     protected bool mouseLeftPressed = false; 
 
     public ScenarioBase(Canvas canvas, string title)
@@ -17,6 +18,9 @@ public abstract class ScenarioBase
         _canvas = canvas;
         this._width = Convert.ToInt32(_canvas.ActualWidth);
         this._height = Convert.ToInt32(_canvas.ActualHeight);
+
+        this.boundary = new Boundary(0,0,this._width, this._height);
+
         this._title = title;
 
         this._canvas.MouseLeftButtonDown += _canvas_MouseLeftButtonDown;
@@ -26,13 +30,11 @@ public abstract class ScenarioBase
     private void _canvas_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
     {
         mouseLeftPressed = false;
-        Debug.WriteLine($"mouse up");
     }
 
     private void _canvas_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
     {
         mouseLeftPressed = true;
-        Debug.WriteLine($"mouse down");
     }
 
 

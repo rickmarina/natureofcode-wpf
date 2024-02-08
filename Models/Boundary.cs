@@ -4,14 +4,14 @@ public struct Boundary
 {
     public float x { get; private set; }
     public float y { get; private set; }
-    public float width { get; private set; }
-    public float height { get; private set; }
+    public float w { get; private set; }
+    public float h { get; private set; }
 
-    public Boundary(float x, float y, float width, float height)
+    public Boundary(float x, float y, float w, float h)
     {
         this.x = x;
         this.y = y;
-        this.width = width;
-        this.height = height;
+        this.w = w;
+        this.h = h;
     }
 }

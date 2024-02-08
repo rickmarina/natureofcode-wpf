@@ -18,18 +18,12 @@ using natureofcode_wpf.Utils;
 
 public class ScenarioWindForcesBasic : ScenarioBase, IScenario
 {
-
+    private Mover mover; 
     private Vector2 gravity; 
-
-    Ellipse ball;
 
     public ScenarioWindForcesBasic(Canvas canvas) : base(canvas,"Wind & gravity forces basic")
     {
-        Mover mover = new Mover(_width/2, _height/2);
-        gravity = new Vector2(0, 0.1f); 
-
-
-        ball = new Ellipse()
+        var shape = new Ellipse()
         {
             StrokeThickness = 2,
             Stroke = Brushes.Black,
@@ -38,21 +32,28 @@ public class ScenarioWindForcesBasic : ScenarioBase, IScenario
             Height = 40
         };
 
+        mover = new Mover(_width/2, _height/2, 1, shape);
+        gravity = new Vector2(0, 0.1f); 
+
     }
 
     public void Draw()
     {
         this._canvas.Children.Clear();
-        this._canvas.Children.Add(ball);
+        this._canvas.Children.Add(mover.shape);
     }
 
     public void Update(long delta)
     {
-        
+        mover.ApplyForce(gravity);
+
+        if (mouseLeftPressed)
+            mover.ApplyForce(new Vector2(0.05f, 0));
 
 
-        //Canvas.SetLeft(ball, position.X-20);
-        //Canvas.SetTop(ball, position.Y-20);
+        mover.Update();
+        mover.Display();
+        mover.CheckEdges(boundary);
 
 
     }

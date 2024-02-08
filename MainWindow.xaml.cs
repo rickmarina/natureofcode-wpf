@@ -44,7 +44,7 @@ namespace natureofcode_wpf
             if (!animated)
             {
                 animated = true;
-                scenario = new ScenarioVectorsMotion101VelocityMouseAcceleration(canvas); // <---- Scenario
+                scenario = new ScenarioWindForcesBasic(canvas); // <---- Scenario
                 this.Title = $"Nature of code [{scenario.GetTitle()}]";
                 scenario?.Draw();
                 await Loop();
