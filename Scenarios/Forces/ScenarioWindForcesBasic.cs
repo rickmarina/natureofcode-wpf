@@ -57,8 +57,10 @@ public class ScenarioWindForcesBasic : ScenarioBase, IScenario
 
     public void Update(long delta)
     {
-        mover1.ApplyForce(gravity);
-        mover2.ApplyForce(gravity);
+
+        //Gravity affects independient of the mass
+        mover1.ApplyForce(Vector2.Multiply(gravity, mover1.GetMass));
+        mover2.ApplyForce(Vector2.Multiply(gravity, mover2.GetMass));
 
         if (mouseLeftPressed)
         {

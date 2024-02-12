@@ -22,6 +22,8 @@ public class Mover
         this.shape.Height = mass * 16;
     }
 
+    public float GetMass => this.mass;
+
     public void ApplyForce(Vector2 force) => this.acceleration = Vector2.Add(acceleration, Vector2.Divide(force, mass));
 
     public void Display()
