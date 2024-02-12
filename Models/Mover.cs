@@ -17,14 +17,17 @@ public class Mover
         this.acceleration = new Vector2(0, 0);
         this.mass = mass;
         this.shape = shape;
+
+        this.shape.Width = mass * 16;
+        this.shape.Height = mass * 16;
     }
 
     public void ApplyForce(Vector2 force) => this.acceleration = Vector2.Add(acceleration, Vector2.Divide(force, mass));
 
     public void Display()
     {
-        Canvas.SetLeft(this.shape, this.position.X-20);
-        Canvas.SetTop(this.shape, this.position.Y-20);
+        Canvas.SetLeft(this.shape, this.position.X-this.shape.Width/2);
+        Canvas.SetTop(this.shape, this.position.Y- this.shape.Width / 2);
     }
 
     public void Update()
