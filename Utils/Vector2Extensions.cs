@@ -19,9 +19,9 @@ namespace natureofcode_wpf.Utils
 
         }
 
-        public static void Random2D(this ref Vector2 v)
+        public static void Random2D(this ref Vector2 v, int min, int max)
         {
-            v = new Vector2(Random.Shared.Next(-100, 100), Random.Shared.Next(-100, 100));
+            v = new Vector2(Random.Shared.Next(min, max), Random.Shared.Next(min, max));
             v = Vector2.Normalize(v);
         }
 

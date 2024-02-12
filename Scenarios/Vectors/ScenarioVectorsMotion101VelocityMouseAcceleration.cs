@@ -30,7 +30,7 @@ public class ScenarioVectorsMotion101VelocityMouseAcceleration : ScenarioBase, I
     {
         position = new Vector2(Random.Shared.Next(_width), Random.Shared.Next(_height));
         velocity = new Vector2(Random.Shared.Next(-2, 2), Random.Shared.Next(-2, 2));
-        acceleration.Random2D();
+        acceleration.Random2D(-100, 100);
 
         ball = new Ellipse()
         {
