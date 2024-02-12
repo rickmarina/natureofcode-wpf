@@ -18,11 +18,13 @@ public class Mover
         this.mass = mass;
         this.shape = shape;
 
-        this.shape.Width = mass * 16;
-        this.shape.Height = mass * 16;
+        this.shape.Width = mass * 12;
+        this.shape.Height = mass * 12;
     }
 
     public float GetMass => this.mass;
+    public Vector2 Position => this.position;
+    public Vector2 Velocity => this.velocity;
 
     public void ApplyForce(Vector2 force) => this.acceleration = Vector2.Add(acceleration, Vector2.Divide(force, mass));
 
@@ -55,6 +57,21 @@ public class Mover
         {
             this.velocity = Vector2.Multiply(this.velocity, new Vector2(1, -1));
             this.position.Y = boundary.h;
+        }
+    }
+
+    public bool ContactEdge(Boundary b)
+    {
+        return (this.position.Y > b.h - (this.shape.Width / 2)- 1);
+    }
+
+    public void BoundeEdges(Boundary b)
+    {
+        float bounce = -0.9f;
+        if (this.position.Y > b.h - (this.shape.Width / 2))
+        {
+            this.position.Y = b.h - (float)(this.shape.Width / 2);
+            this.velocity.Y *= bounce;
         }
     }
 
