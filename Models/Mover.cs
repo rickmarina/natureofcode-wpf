@@ -53,10 +53,10 @@ public class Mover
             this.position.X = 0;
         }
 
-        if (this.position.Y > boundary.h)
+        if (this.position.Y > boundary.h - (this.shape.Height/2))
         {
             this.velocity = Vector2.Multiply(this.velocity, new Vector2(1, -1));
-            this.position.Y = boundary.h;
+            this.position.Y = boundary.h - (float)(this.shape.Height/2);
         }
     }
 

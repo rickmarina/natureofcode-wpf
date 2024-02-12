@@ -8,7 +8,8 @@ public class Brushes
     public static SolidColorBrush Black => new SolidColorBrush(Colors.Black);
     public static SolidColorBrush BlackAlfa(double alfa) => new SolidColorBrush(Color.FromArgb((byte)alfa, 0,0,0));
     public static SolidColorBrush LightGray => new SolidColorBrush(Colors.LightGray);
-
+    public static SolidColorBrush LightBlue => new SolidColorBrush(Colors.LightBlue);
+    public static SolidColorBrush CustomAlfa(byte r, byte g, byte b, byte a) => new SolidColorBrush(Color.FromArgb(a, r,g,b));
     public static SolidColorBrush Random()
     {
         Random rnd = new Random();

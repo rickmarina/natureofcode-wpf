@@ -66,8 +66,6 @@ public class ScenarioForcesFriction : ScenarioBase, IScenario
         mover1.BoundeEdges(boundary);
         mover1.Update();
         mover1.Display();
-
-
     }
 
 
