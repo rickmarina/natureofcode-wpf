@@ -63,7 +63,6 @@ public abstract class ScenarioBase
 
 
     public string GetTitle() => this._title;
-
     
 
     protected TranslateTransform Translate(double x, double y) => new TranslateTransform(x, y); // Translate origin
