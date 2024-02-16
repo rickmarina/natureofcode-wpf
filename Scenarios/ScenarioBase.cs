@@ -11,7 +11,12 @@ public abstract class ScenarioBase
     protected readonly int _width;
     protected readonly string _title;
     protected Boundary boundary; 
-    protected bool mouseLeftPressed = false; 
+    protected bool mouseLeftPressed = false;
+    protected bool mouseLeftReleased = false; 
+    protected bool mouseMove = false;
+    protected bool mouseDragg = false; 
+    protected double mouseX;
+    protected double mouseY; 
 
     public ScenarioBase(Canvas canvas, string title)
     {
@@ -25,16 +30,35 @@ public abstract class ScenarioBase
 
         this._canvas.MouseLeftButtonDown += _canvas_MouseLeftButtonDown;
         this._canvas.MouseLeftButtonUp += _canvas_MouseLeftButtonUp;
+        this._canvas.MouseMove += _canvas_MouseMove;
+    }
+
+    private void _canvas_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        if (mouseLeftPressed)
+            mouseDragg = true; 
+        else 
+            mouseMove = true;
+        mouseX = e.MouseDevice.GetPosition(this._canvas).X;
+        mouseY = e.MouseDevice.GetPosition(this._canvas).Y;
     }
 
     private void _canvas_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
     {
+        mouseMove = false;
         mouseLeftPressed = false;
+        mouseLeftReleased = true;
+        mouseX = e.MouseDevice.GetPosition(this._canvas).X;
+        mouseY = e.MouseDevice.GetPosition(this._canvas).Y;
     }
 
     private void _canvas_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
     {
+        mouseMove = false;
         mouseLeftPressed = true;
+        mouseLeftReleased = false;
+        mouseX = e.MouseDevice.GetPosition(this._canvas).X;
+        mouseY = e.MouseDevice.GetPosition(this._canvas).Y;
     }
 
 
