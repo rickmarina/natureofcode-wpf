@@ -51,7 +51,7 @@ namespace natureofcode_wpf.Models
             Vector2 force = Vector2.Subtract(this.position, m.Position);
             float distance = force.Length();
 
-            distance = Math.Max(5, Math.Min(25, distance));
+            distance = Math.Max(5, Math.Min(25, distance)); //constraint distance in order to avoid very high distance with no effect and near zero edge case
 
             float strength = (G * this.mass * m.GetMass) / (distance * distance);
             force.SetMag(strength);
