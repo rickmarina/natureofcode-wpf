@@ -1,10 +1,13 @@
-﻿using System.Numerics;
+﻿using natureofcode_wpf.Utils;
+using System;
+using System.Numerics;
 using System.Windows.Controls;
 using System.Windows.Shapes;
 
 namespace natureofcode_wpf.Models;
 public class Mover
 {
+    public const float G = 1.0f;
     private float mass; 
     private Vector2 position;
     private Vector2 velocity;
@@ -73,6 +76,18 @@ public class Mover
             this.position.Y = b.h - (float)(this.shape.Width / 2);
             this.velocity.Y *= bounce;
         }
+    }
+
+    public Vector2 Attract(Mover m)
+    {
+        Vector2 force = Vector2.Subtract(this.position, m.Position);
+        float distance = force.Length();
+
+        distance = Math.Max(5, Math.Min(25, distance)); //constraint distance in order to avoid very high distance with no effect and near zero edge case
+
+        float strength = (G * this.mass * m.GetMass) / (distance * distance);
+        force.SetMag(strength);
+        return force;
     }
 
 }

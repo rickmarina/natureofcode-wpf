@@ -16,24 +16,13 @@ using natureofcode_wpf.Models;
 using natureofcode_wpf.Utils;
 
 
-public class ScenarioForcesAttractionManyMovers : ScenarioBase, IScenario
+public class ScenarioForcesAttractionManyMoversMutual : ScenarioBase, IScenario
 {
     private const int TOTAL_MOVERS = 500;
     private List<Mover> movers;
-    private Attractor attractor;
 
-    public ScenarioForcesAttractionManyMovers(Canvas canvas) : base(canvas,"Attraction with Many Movers")
+    public ScenarioForcesAttractionManyMoversMutual(Canvas canvas) : base(canvas,"Attraction with Many Movers Mutual Attraction")
     {
-        var shapeAttractor = new Ellipse()
-        {
-            StrokeThickness = 4,
-            Stroke = Brushes.Black,
-            Fill = Brushes.LightGray,
-            Width = 40,
-            Height = 40
-        };
-        attractor = new Attractor(_width / 2, _height / 2, 5, shapeAttractor);
-
 
         movers = new();
         for (int i = 0; i < TOTAL_MOVERS; i++)
@@ -47,10 +36,8 @@ public class ScenarioForcesAttractionManyMovers : ScenarioBase, IScenario
                 Height = 40
             };
 
-            
-
             var mover = new Mover(Random.Shared.Next(_width), Random.Shared.Next(_height), (float)Random.Shared.NextDouble() * 4 + 1, shapeMover);
-            mover.ApplyForce(new Vector2(1.5f, 0));
+            mover.ApplyForce(new Vector2(0, 0));
             movers.Add(mover);
         }
 
@@ -63,36 +50,25 @@ public class ScenarioForcesAttractionManyMovers : ScenarioBase, IScenario
         foreach (var m in movers) 
             this._canvas.Children.Add(m.shape);
 
-        this._canvas.Children.Add(attractor.shape);
     }
 
     public void Update(long delta)
     {
-        attractor.Display();
 
-        if (mouseMove)
+        for (int i=0;i< TOTAL_MOVERS;i++)
         {
-            attractor.HandleHover(mouseX, mouseY);
-        }
-        if (mouseDragg)
-        {
-            attractor.HandleDragged(mouseX, mouseY);
-        }
-        if (mouseLeftPressed)
-        {
-            attractor.HandlePress(mouseX, mouseY);
-        }
-        if (mouseLeftReleased)
-        {
-            attractor.StopDragging();
-        }
+            for (int j=0; j< TOTAL_MOVERS; j++)
+            {
+                if (i != j)
+                {
+                    Vector2 force = movers[j].Attract(movers[i]);
+                    movers[i].ApplyForce(force);
+                }
+            }
 
-        foreach (var m in movers) { 
-            Vector2 force = attractor.Attract(m);
-            m.ApplyForce(force); 
+            movers[i].Update();
+            movers[i].Display();
 
-            m.Update();
-            m.Display();
         }
 
 
