@@ -1,19 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Numerics;
-using System.Runtime.Intrinsics;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Shapes;
-using System.Xml;
 using NatureOfCode.Models;
 using natureofcode_wpf.Models;
-using natureofcode_wpf.Utils;
 
 
 public class ScenarioForcesAttraction : ScenarioBase, IScenario

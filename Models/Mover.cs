@@ -1,7 +1,9 @@
 ﻿using natureofcode_wpf.Utils;
 using System;
 using System.Numerics;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace natureofcode_wpf.Models;
@@ -37,6 +39,11 @@ public class Mover
         Canvas.SetTop(this.shape, this.position.Y- this.shape.Width / 2);
     }
 
+    public void Rotate(double angle)
+    {
+        this.shape.RenderTransformOrigin = new Point(0.5, 0.5);
+        this.shape.RenderTransform = new RotateTransform(angle);
+    }
     public void Update()
     {
         this.velocity = Vector2.Add(this.velocity, this.acceleration);

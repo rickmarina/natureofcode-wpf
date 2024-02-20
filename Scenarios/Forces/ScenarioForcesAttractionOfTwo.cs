@@ -1,22 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Numerics;
-using System.Runtime.Intrinsics;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Shapes;
-using System.Xml;
 using NatureOfCode.Models;
 using natureofcode_wpf.Models;
-using natureofcode_wpf.Utils;
 
 
 public class ScenarioForcesAttractionOfTwo : ScenarioBase, IScenario
