@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using System.Numerics;
 using System.Windows;
@@ -6,6 +7,7 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using NatureOfCode.Models;
 using natureofcode_wpf.Models;
+using natureofcode_wpf.Utils;
 
 
 public class ScenarioOscilationRotateCanvas : ScenarioBase, IScenario
@@ -63,11 +65,12 @@ public class ScenarioOscilationRotateCanvas : ScenarioBase, IScenario
     public void Update(long delta)
     {
         TransformGroup transforms = new TransformGroup();
-        transforms.Children.Add(new RotateTransform(angle));
+        transforms.Children.Add(new RotateTransform(Degrees.RadiansToDegrees(angle)));
         transforms.Children.Add(new TranslateTransform(_width / 2, _height / 2));
         _canvas.RenderTransform = transforms;
 
-        angle = (angle +1) % 360;
+        //angle = (angle + 1) % 360;
+        angle += 0.1;
 
     }
 
