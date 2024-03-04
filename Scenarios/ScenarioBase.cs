@@ -1,4 +1,5 @@
-﻿using natureofcode_wpf.Models;
+﻿using NatureOfCode.Models;
+using natureofcode_wpf.Models;
 using System;
 using System.Windows.Controls;
 using System.Windows.Media;

@@ -9,7 +9,7 @@ using natureofcode_wpf.Models;
 
 public class ScenarioForcesAttractionManyMoversMutual : ScenarioBase, IScenario
 {
-    private const int TOTAL_MOVERS = 500;
+    private const int TOTAL_MOVERS = 50;
     private List<Mover> movers;
 
     public ScenarioForcesAttractionManyMoversMutual(Canvas canvas) : base(canvas,"Attraction with Many Movers Mutual Attraction")
