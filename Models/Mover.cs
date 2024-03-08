@@ -34,6 +34,11 @@ public class Mover
         }
     }
 
+    public void SetPosition(Vector2 pos)
+    {
+        this.position = pos;
+    }
+
     public float GetMass => this.mass;
     public Vector2 Position => this.position;
     public Vector2 Velocity => this.velocity;

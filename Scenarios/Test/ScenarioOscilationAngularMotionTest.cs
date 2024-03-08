@@ -24,7 +24,7 @@ public class ScenarioOscilationAngularMotionTest : ScenarioBase, IScenario
         {
             Stroke = Brushes.Black,
             StrokeThickness = 2,
-            Fill = Brushes.LightBlue(),
+            Fill = Brushes.LightBlue,
             Width = 100,
             Height = 100,
             Radio = 40
@@ -34,7 +34,7 @@ public class ScenarioOscilationAngularMotionTest : ScenarioBase, IScenario
         {
             Stroke = Brushes.Black,
             StrokeThickness = 2,
-            Fill = Brushes.LightBlue(),
+            Fill = Brushes.LightBlue,
             Width = 100,
             Height = 100
         };

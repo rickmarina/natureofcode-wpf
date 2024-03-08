@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using NatureOfCode.Models;
+using natureofcode_wpf.Scenarios.CodingTrain;
 
 namespace natureofcode_wpf
 {
@@ -44,7 +45,7 @@ namespace natureofcode_wpf
             if (!animated)
             {
                 animated = true;
-                scenario = new ScenarioForcesWithAngularMotion(canvas); // <---- Scenario
+                scenario = new ScenarioTrailing(canvas); // <---- Scenario
                 this.Title = $"Nature of code [{scenario.GetTitle()}]";
                 scenario?.Draw();
                 await Loop();
