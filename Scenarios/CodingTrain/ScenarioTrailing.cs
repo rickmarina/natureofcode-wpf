@@ -13,7 +13,7 @@ namespace natureofcode_wpf.Scenarios.CodingTrain
         Queue<Mover> queue;
 
 
-        public ScenarioTrailing(Canvas canvas) : base(canvas, "Trailing")
+        public ScenarioTrailing(Canvas canvas) : base(canvas, "CondigTrain > Trailing")
         {
             Ellipse ball = new Ellipse()
             {
