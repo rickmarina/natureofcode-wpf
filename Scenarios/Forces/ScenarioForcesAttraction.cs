@@ -5,7 +5,7 @@ using NatureOfCode.Models;
 using natureofcode_wpf.Models;
 
 
-public class ScenarioForcesAttraction : ScenarioBase, IScenario
+public class ScenarioForcesAttraction : ScenarioBase
 {
     private Mover mover;
     private Attractor attractor;
@@ -36,7 +36,7 @@ public class ScenarioForcesAttraction : ScenarioBase, IScenario
 
     }
 
-    public void Draw()
+    public override void Setup()
     {
         this._canvas.Children.Clear();
         this._canvas.Children.Add(attractor.shape);
@@ -44,7 +44,7 @@ public class ScenarioForcesAttraction : ScenarioBase, IScenario
 
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
         attractor.Display();
 

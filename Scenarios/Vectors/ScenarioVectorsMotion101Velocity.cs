@@ -13,7 +13,7 @@ using System.Xml;
 using NatureOfCode.Models;
 
 
-public class ScenarioVectorsMotion101Velocity : ScenarioBase, IScenario
+public class ScenarioVectorsMotion101Velocity : ScenarioBase
 {
 
     Vector2 position;
@@ -37,13 +37,13 @@ public class ScenarioVectorsMotion101Velocity : ScenarioBase, IScenario
 
     }
 
-    public void Draw()
+    public override void Setup()
     {
         this._canvas.Children.Clear();
         this._canvas.Children.Add(ball);
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
         
         position = Vector2.Add(position, velocity);

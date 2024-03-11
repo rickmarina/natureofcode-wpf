@@ -19,7 +19,7 @@ using natureofcode_wpf.Models;
 using natureofcode_wpf.Utils;
 
 
-public class ScenarioForcesFluidResistance : ScenarioBase, IScenario
+public class ScenarioForcesFluidResistance : ScenarioBase
 {
     private List<Mover> movers; 
     private Vector2 gravity;
@@ -49,7 +49,7 @@ public class ScenarioForcesFluidResistance : ScenarioBase, IScenario
 
     }
 
-    public void Draw()
+    public override void Setup()
     {
         this._canvas.Children.Clear();
 
@@ -68,7 +68,7 @@ public class ScenarioForcesFluidResistance : ScenarioBase, IScenario
             this._canvas.Children.Add(m.shape);
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
         //Gravity affects independient of the mass
         foreach (var m in movers) { 

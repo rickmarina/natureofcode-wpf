@@ -12,7 +12,7 @@ using natureofcode_wpf.Models;
 using natureofcode_wpf.Utils;
 
 
-public class ScenarioOscilationAngularMotionTest : ScenarioBase, IScenario
+public class ScenarioOscilationAngularMotionTest : ScenarioBase
 {
     private Mover mover1; 
     private Mover mover2;
@@ -46,7 +46,7 @@ public class ScenarioOscilationAngularMotionTest : ScenarioBase, IScenario
 
     }
 
-    public void Draw()
+    public override void Setup()
     {
         this._canvas.Children.Clear(); 
         this._canvas.Children.Add(mover1.shape);
@@ -56,7 +56,7 @@ public class ScenarioOscilationAngularMotionTest : ScenarioBase, IScenario
 
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
 
         mover1.Rotate(Degrees.RadiansToDegrees(angle));

@@ -8,7 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using NatureOfCode.Models;
-public class ScenarioPerlinNoiseWalker : ScenarioBase, IScenario
+public class ScenarioPerlinNoiseWalker : ScenarioBase
 {
     private double timeX;
     private double timeY;
@@ -19,12 +19,12 @@ public class ScenarioPerlinNoiseWalker : ScenarioBase, IScenario
         timeY = 1000;
     }
 
-    public void Draw()
+    public override void Setup()
     {
         this._canvas.Children.Clear();
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
         double x = PerlinNoise.Noise01(timeX, timeX, timeX);
         double y = PerlinNoise.Noise01(timeY, timeY, timeY);

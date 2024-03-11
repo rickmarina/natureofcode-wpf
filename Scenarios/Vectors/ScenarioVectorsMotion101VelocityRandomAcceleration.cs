@@ -15,7 +15,7 @@ using NatureOfCode.Models;
 using natureofcode_wpf.Utils;
 
 
-public class ScenarioVectorsMotion101VelocityRandomAcceleration : ScenarioBase, IScenario
+public class ScenarioVectorsMotion101VelocityRandomAcceleration : ScenarioBase
 {
 
     private Vector2 position;
@@ -48,14 +48,14 @@ public class ScenarioVectorsMotion101VelocityRandomAcceleration : ScenarioBase, 
 
     }
 
-    public void Draw()
+    public override void Setup()
     {
         this._canvas.Children.Clear();
         this._canvas.Children.Add(ball);
         this._canvas.Children.Add(labelVelocity);
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
         acceleration.Random2D(-100, 100);
         acceleration = Vector2.Multiply(acceleration, Random.Shared.Next(2));

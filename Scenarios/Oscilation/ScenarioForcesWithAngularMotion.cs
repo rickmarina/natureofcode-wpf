@@ -8,7 +8,7 @@ using NatureOfCode.Models;
 using natureofcode_wpf.Models;
 
 
-public class ScenarioForcesWithAngularMotion : ScenarioBase, IScenario
+public class ScenarioForcesWithAngularMotion : ScenarioBase
 {
     private List<Mover> movers;
     private Attractor attractor;
@@ -52,7 +52,7 @@ public class ScenarioForcesWithAngularMotion : ScenarioBase, IScenario
 
     }
 
-    public void Draw() 
+    public override void Setup() 
     {
         this._canvas.Children.Clear();
 
@@ -65,7 +65,7 @@ public class ScenarioForcesWithAngularMotion : ScenarioBase, IScenario
 
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
         foreach (var m in movers)
         {

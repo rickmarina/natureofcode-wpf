@@ -11,7 +11,7 @@ using natureofcode_wpf.Models;
 using natureofcode_wpf.Utils;
 
 
-public class ScenarioOscilationAngularMotionWithRotate : ScenarioBase, IScenario
+public class ScenarioOscilationAngularMotionWithRotate : ScenarioBase
 {
     private double angle = 0;
     private double angleVelocity = 0;
@@ -53,7 +53,7 @@ public class ScenarioOscilationAngularMotionWithRotate : ScenarioBase, IScenario
 
     }
 
-    public void Draw()
+    public override void Setup()
     {
         this._canvas.Children.Add(line1);
         this._canvas.Children.Add(circle1);
@@ -65,7 +65,7 @@ public class ScenarioOscilationAngularMotionWithRotate : ScenarioBase, IScenario
         Canvas.SetTop(circle2, -20);
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
         TransformGroup transforms = new TransformGroup();
         transforms.Children.Add(new RotateTransform(Degrees.RadiansToDegrees(angle)));

@@ -6,7 +6,7 @@ using System;
 using System.Diagnostics;
 using Accessibility;
 
-public class ScenarioGraphPerlinNoise : ScenarioBase, IScenario
+public class ScenarioGraphPerlinNoise : ScenarioBase
 {
 
     private Polyline _poly;
@@ -18,12 +18,12 @@ public class ScenarioGraphPerlinNoise : ScenarioBase, IScenario
         _poly = new Polyline() {  StrokeThickness = 3, Stroke = Brushes.Random() };
     }
 
-    public void Draw()
+    public override void Setup()
     {
         _canvas.Children.Add(_poly);
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
         _poly.Points.Clear();
 

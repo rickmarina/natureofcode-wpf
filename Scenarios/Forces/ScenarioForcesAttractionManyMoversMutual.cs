@@ -7,7 +7,7 @@ using NatureOfCode.Models;
 using natureofcode_wpf.Models;
 
 
-public class ScenarioForcesAttractionManyMoversMutual : ScenarioBase, IScenario
+public class ScenarioForcesAttractionManyMoversMutual : ScenarioBase
 {
     private const int TOTAL_MOVERS = 50;
     private List<Mover> movers;
@@ -34,7 +34,7 @@ public class ScenarioForcesAttractionManyMoversMutual : ScenarioBase, IScenario
 
     }
 
-    public void Draw()
+    public override void Setup()
     {
         this._canvas.Children.Clear();
 
@@ -43,7 +43,7 @@ public class ScenarioForcesAttractionManyMoversMutual : ScenarioBase, IScenario
 
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
 
         for (int i=0;i< TOTAL_MOVERS;i++)

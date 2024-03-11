@@ -7,7 +7,7 @@ using System.Windows.Shapes;
 
 namespace natureofcode_wpf.Scenarios.CodingTrain
 {
-    internal class ScenarioTrailing : ScenarioBase, IScenario
+    internal class ScenarioTrailing : ScenarioBase
     {
         Mover mov;
         Queue<Mover> queue;
@@ -40,7 +40,7 @@ namespace natureofcode_wpf.Scenarios.CodingTrain
 
         }
 
-        public void Draw()
+        public override void Setup()
         {
             _canvas.Children.Clear();
 
@@ -53,7 +53,7 @@ namespace natureofcode_wpf.Scenarios.CodingTrain
             _canvas.Children.Add(mov.shape);
         }
 
-        public void Update(long delta)
+        public override void Update(long delta)
         {
             mov.ApplyForce(new System.Numerics.Vector2(0.01f, 0.05f));
 

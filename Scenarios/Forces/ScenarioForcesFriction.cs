@@ -1,22 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Numerics;
-using System.Runtime.Intrinsics;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Shapes;
-using System.Xml;
 using NatureOfCode.Models;
 using natureofcode_wpf.Models;
 using natureofcode_wpf.Utils;
 
 
-public class ScenarioForcesFriction : ScenarioBase, IScenario
+public class ScenarioForcesFriction : ScenarioBase
 {
     private Mover mover1; 
     private Vector2 gravity;
@@ -38,13 +28,13 @@ public class ScenarioForcesFriction : ScenarioBase, IScenario
 
     }
 
-    public void Draw()
+    public override void Setup()
     {
         this._canvas.Children.Clear();
         this._canvas.Children.Add(mover1.shape);
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
         //Gravity affects independient of the mass
         mover1.ApplyForce(Vector2.Multiply(gravity, mover1.GetMass));

@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Xml;
 using NatureOfCode.Models;
-public class ScenarioVectorsMultiplying : ScenarioBase, IScenario
+public class ScenarioVectorsMultiplying : ScenarioBase
 {
 
     Vector2 center;
@@ -21,12 +21,12 @@ public class ScenarioVectorsMultiplying : ScenarioBase, IScenario
         center = new Vector2(_width/2, _height/2);
     }
 
-    public void Draw()
+    public override void Setup()
     {
         this._canvas.Children.Clear();
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
         this._canvas.Children.Clear();
 

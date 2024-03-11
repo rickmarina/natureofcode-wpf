@@ -9,7 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using NatureOfCode.Models;
-public class ScenarioVectorsBouncingBall : ScenarioBase, IScenario
+public class ScenarioVectorsBouncingBall : ScenarioBase
 {
 
     Vector2 position;
@@ -33,14 +33,14 @@ public class ScenarioVectorsBouncingBall : ScenarioBase, IScenario
 
     }
 
-    public void Draw()
+    public override void Setup()
     {
         this._canvas.Children.Clear();
 
         this._canvas.Children.Add(ball);
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
         
         position = Vector2.Add(velocity, position);

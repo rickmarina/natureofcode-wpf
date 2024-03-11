@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using NatureOfCode.Models;
-public class ScenarioPerlinNoise2D : ScenarioBase, IScenario
+public class ScenarioPerlinNoise2D : ScenarioBase
 {
     private double time; 
     public ScenarioPerlinNoise2D(Canvas canvas) : base(canvas,"Perlin Noise 2D")
@@ -18,7 +18,7 @@ public class ScenarioPerlinNoise2D : ScenarioBase, IScenario
         time = Random.Shared.NextDouble()*1000;
     }
 
-    public void Draw()
+    public override void Setup()
     {
         this._canvas.Children.Clear();
 
@@ -48,7 +48,7 @@ public class ScenarioPerlinNoise2D : ScenarioBase, IScenario
         this._canvas.Children.Add(img);
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
 
     }

@@ -4,7 +4,7 @@ using System;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-public abstract class ScenarioBase
+public abstract class ScenarioBase : IScenario
 {
     protected readonly Canvas _canvas;
     protected readonly int _height;
@@ -63,8 +63,10 @@ public abstract class ScenarioBase
 
 
     public string GetTitle() => this._title;
-    
 
     protected TranslateTransform Translate(double x, double y) => new TranslateTransform(x, y); // Translate origin
+
+    public abstract void Setup();
+    public abstract void Update(long delta);
 
 }

@@ -5,7 +5,7 @@ using NatureOfCode.Models;
 using natureofcode_wpf.Models;
 
 
-public class ScenarioForcesAttractionOfTwo : ScenarioBase, IScenario
+public class ScenarioForcesAttractionOfTwo : ScenarioBase
 {
     private Mover mover1;
     private Mover mover2;
@@ -37,7 +37,7 @@ public class ScenarioForcesAttractionOfTwo : ScenarioBase, IScenario
         mover2.ApplyForce(new Vector2(-1, 0));
     }
 
-    public void Draw()
+    public override void Setup()
     {
         this._canvas.Children.Clear();
 
@@ -46,7 +46,7 @@ public class ScenarioForcesAttractionOfTwo : ScenarioBase, IScenario
 
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
 
         Vector2 force2 = mover1.Attract(mover2);

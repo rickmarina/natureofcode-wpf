@@ -9,7 +9,7 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Xml.Schema;
 using NatureOfCode.Models;
-public class ScenarioRandomNumberDistribution : ScenarioBase, IScenario
+public class ScenarioRandomNumberDistribution : ScenarioBase
 {
 
     private List<Rectangle> _rects;
@@ -39,14 +39,14 @@ public class ScenarioRandomNumberDistribution : ScenarioBase, IScenario
 
     }
 
-    public void Draw()
+    public override void Setup()
     {
         this._canvas.Children.Clear();
         foreach (var r in _rects)
             this._canvas.Children.Add(r);
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
         int idx = Random.Shared.Next(TOTAL);
 

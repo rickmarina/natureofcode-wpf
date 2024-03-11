@@ -3,6 +3,6 @@ namespace NatureOfCode.Models;
  public interface IScenario
  {
     string GetTitle();
-     void Draw();
+     void Setup();
      void Update(long delta);
  }

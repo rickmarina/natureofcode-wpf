@@ -15,7 +15,7 @@ using NatureOfCode.Models;
 using natureofcode_wpf.Utils;
 
 
-public class ScenarioVectorsMotion101VelocityPerlinAcceleration : ScenarioBase, IScenario
+public class ScenarioVectorsMotion101VelocityPerlinAcceleration : ScenarioBase
 {
 
     private Vector2 position;
@@ -50,14 +50,14 @@ public class ScenarioVectorsMotion101VelocityPerlinAcceleration : ScenarioBase, 
 
     }
 
-    public void Draw()
+    public override void Setup()
     {
         this._canvas.Children.Clear();
         this._canvas.Children.Add(ball);
         this._canvas.Children.Add(labelVelocity);
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
 
         double x = PerlinNoise.Noise(timeX, timeX, timeX);

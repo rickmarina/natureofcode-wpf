@@ -15,7 +15,7 @@ using NatureOfCode.Models;
 using natureofcode_wpf.Utils;
 
 
-public class ScenarioVectorsMotion101VelocityMouseAcceleration : ScenarioBase, IScenario
+public class ScenarioVectorsMotion101VelocityMouseAcceleration : ScenarioBase
 {
 
     private Vector2 position;
@@ -43,13 +43,13 @@ public class ScenarioVectorsMotion101VelocityMouseAcceleration : ScenarioBase, I
 
     }
 
-    public void Draw()
+    public override void Setup()
     {
         this._canvas.Children.Clear();
         this._canvas.Children.Add(ball);
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
         Vector2 mouse = new Vector2((float)Mouse.GetPosition(_canvas).X, (float)Mouse.GetPosition(_canvas).Y);
 

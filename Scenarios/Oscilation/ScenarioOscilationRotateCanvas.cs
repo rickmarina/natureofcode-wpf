@@ -10,7 +10,7 @@ using natureofcode_wpf.Models;
 using natureofcode_wpf.Utils;
 
 
-public class ScenarioOscilationRotateCanvas : ScenarioBase, IScenario
+public class ScenarioOscilationRotateCanvas : ScenarioBase
 {
     private double angle = 0;
     private Ellipse circle1;
@@ -50,7 +50,7 @@ public class ScenarioOscilationRotateCanvas : ScenarioBase, IScenario
 
     }
 
-    public void Draw()
+    public override void Setup()
     {
         this._canvas.Children.Add(line1);
         this._canvas.Children.Add(circle1);
@@ -62,7 +62,7 @@ public class ScenarioOscilationRotateCanvas : ScenarioBase, IScenario
         Canvas.SetTop(circle2, -20);
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
         TransformGroup transforms = new TransformGroup();
         transforms.Children.Add(new RotateTransform(Degrees.RadiansToDegrees(angle)));

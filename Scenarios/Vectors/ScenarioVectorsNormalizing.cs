@@ -13,7 +13,7 @@ using System.Xml;
 using NatureOfCode.Models;
 
 
-public class ScenarioVectorsNormalizing : ScenarioBase, IScenario
+public class ScenarioVectorsNormalizing : ScenarioBase
 {
 
     Vector2 center;
@@ -23,12 +23,12 @@ public class ScenarioVectorsNormalizing : ScenarioBase, IScenario
         center = new Vector2(_width/2, _height/2);
     }
 
-    public void Draw()
+    public override void Setup()
     {
         this._canvas.Children.Clear();
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
         this._canvas.Children.Clear();
 

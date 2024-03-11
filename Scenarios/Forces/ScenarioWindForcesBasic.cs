@@ -16,7 +16,7 @@ using natureofcode_wpf.Models;
 using natureofcode_wpf.Utils;
 
 
-public class ScenarioWindForcesBasic : ScenarioBase, IScenario
+public class ScenarioWindForcesBasic : ScenarioBase
 {
     private Mover mover1; 
     private Mover mover2;
@@ -48,14 +48,14 @@ public class ScenarioWindForcesBasic : ScenarioBase, IScenario
 
     }
 
-    public void Draw()
+    public override void Setup()
     {
         this._canvas.Children.Clear();
         this._canvas.Children.Add(mover1.shape);
         this._canvas.Children.Add(mover2.shape);
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
 
         //Gravity affects independient of the mass

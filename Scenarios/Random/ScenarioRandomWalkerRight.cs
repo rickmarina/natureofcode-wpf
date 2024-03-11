@@ -8,7 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using NatureOfCode.Models;
-public class ScenarioRandomWalkerRight : ScenarioBase, IScenario
+public class ScenarioRandomWalkerRight : ScenarioBase
 {
 
     private Polyline _poly;
@@ -25,13 +25,13 @@ public class ScenarioRandomWalkerRight : ScenarioBase, IScenario
 
     }
 
-    public void Draw()
+    public override void Setup()
     {
         this._canvas.Children.Clear();
         this._canvas.Children.Add(_poly);
     }
 
-    public void Update(long delta)
+    public override void Update(long delta)
     {
         double dir = Random.Shared.NextDouble();
 
