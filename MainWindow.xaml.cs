@@ -33,7 +33,7 @@ namespace natureofcode_wpf
             if (!animated)
             {
                 animated = true;
-                scenario = new ScenarioTrailing(canvas); // <---- Scenario
+                scenario = new ScenarioForcesWithAngularMotion(canvas); // <---- Scenario
                 this.Title = $"Nature of code [{scenario.GetTitle()}]";
                 scenario?.Setup();
                 await Loop();

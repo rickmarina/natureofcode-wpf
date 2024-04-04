@@ -28,7 +28,7 @@ public class Mover
         this.mass = mass;
         this.shape = shape;
 
-        if (shape is not Circle) { 
+        if (shape is not RadioCircle) { 
             this.shape.Width = mass * 12;
             this.shape.Height = mass * 12;
         }

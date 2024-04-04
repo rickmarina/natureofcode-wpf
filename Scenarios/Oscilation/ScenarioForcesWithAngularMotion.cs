@@ -32,7 +32,7 @@ public class ScenarioForcesWithAngularMotion : ScenarioBase
         for (int i=0;i<20;i++)
         {
             int radio = Random.Shared.Next(10, 20);
-            Circle c = new Circle()
+            RadioCircle c = new RadioCircle()
             {
                 StrokeThickness = 2,
                 Stroke = Brushes.Black,

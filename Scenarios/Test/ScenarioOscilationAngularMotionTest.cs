@@ -20,7 +20,7 @@ public class ScenarioOscilationAngularMotionTest : ScenarioBase
 
     public ScenarioOscilationAngularMotionTest(Canvas canvas) : base(canvas, "Angular motion Test")
     {
-        Circle r1 = new Circle()
+        RadioCircle r1 = new RadioCircle()
         {
             Stroke = Brushes.Black,
             StrokeThickness = 2,

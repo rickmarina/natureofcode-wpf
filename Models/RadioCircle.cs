@@ -4,7 +4,7 @@ using System.Windows.Shapes;
 
 namespace natureofcode_wpf.Models
 {
-    public class Circle : Shape
+    public class RadioCircle : Shape
     {
         public double Radio { get; set; }
 
