@@ -29,5 +29,7 @@ namespace natureofcode_wpf.Utils
         {
             v = Vector2.Multiply(Vector2.Normalize(v), mag);
         }
+
+        public static double Heading(this Vector2 v) => Math.Atan2(v.Y, v.X);
     }
 }

@@ -1,11 +1,8 @@
 ﻿using natureofcode_wpf.Utils;
 using System;
-using System.Diagnostics;
 using System.Numerics;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
 namespace natureofcode_wpf.Models;
@@ -16,9 +13,13 @@ public class Mover
     private Vector2 position;
     private Vector2 velocity;
     private Vector2 acceleration;
+
     private double angle = 0;
     private double angleVelocity = 0;
     private double angleAcceleration = 0;
+
+    public float topVelocity { get; set; } = float.MaxValue; 
+
     public Shape shape { get; private set; } 
 
     public Mover(float x, float y, float mass, Shape shape) { 
@@ -27,11 +28,6 @@ public class Mover
         this.acceleration = new Vector2(0, 0);
         this.mass = mass;
         this.shape = shape;
-
-        if (shape is not RadioCircle) { 
-            this.shape.Width = mass * 12;
-            this.shape.Height = mass * 12;
-        }
     }
 
     public void SetPosition(Vector2 pos)
@@ -49,20 +45,22 @@ public class Mover
 
     public void Display()
     {
-        Canvas.SetLeft(this.shape, this.position.X-this.shape.Width/2);
-        Canvas.SetTop(this.shape, this.position.Y- this.shape.Width / 2);
+        Canvas.SetLeft(this.shape, this.position.X - this.shape.Width / 2);
+        Canvas.SetTop(this.shape,  this.position.Y - this.shape.Height / 2);
         Rotate(this.angle);
     }
 
-    //Rotate radians 
-    public void Rotate(double angle)
+    //Rotate shape radians 
+    // in base to the RenderTransformOrigin defined in the shape
+    public void Rotate(double angleRad)
     {
-        //this.shape.RenderTransformOrigin = new Point(0, 0);
-        this.shape.RenderTransform = new RotateTransform(Degrees.RadiansToDegrees(angle));
+        this.shape.RenderTransform = new RotateTransform(Degrees.RadiansToDegrees(angleRad));
     }
     public void Update()
     {
         this.velocity = Vector2.Add(this.velocity, this.acceleration);
+        this.velocity.Limit(topVelocity); 
+
         this.position = Vector2.Add(this.position, this.velocity);
 
         this.angleVelocity += this.angleAcceleration;
