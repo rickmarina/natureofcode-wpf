@@ -9,3 +9,6 @@ Repository with code adapted to .NET WPF from book "Nature of code" by Daniel Sh
 
 ## Attraction:
 ![screenshot_133525583140706338](https://github.com/rickmarina/natureofcode-wpf/assets/18282148/595d91ed-abb8-4796-b010-836b2778f300)
+
+## Spiral:
+![screenshot_133583589142642557](https://github.com/rickmarina/natureofcode-wpf/assets/18282148/1a5b5451-177c-4802-b25c-d95b08fac473)
