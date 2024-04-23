@@ -1,5 +1,3 @@
-using System;
-using System.Diagnostics;
 using System.Numerics;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,7 +8,6 @@ using natureofcode_wpf.Utils;
 public class ScenarioPointingDirectionMotion : ScenarioBase
 {
     private Mover mover;
-    private double angle = 0;
 
     public ScenarioPointingDirectionMotion(Canvas canvas) : base(canvas, "Pointing in the Direction of Motion")
     {

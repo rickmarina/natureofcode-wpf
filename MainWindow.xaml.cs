@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Media.Imaging;
 using NatureOfCode.Models;
 using natureofcode_wpf.Scenarios.CodingTrain;
+using natureofcode_wpf.Scenarios.Oscilation;
 
 namespace natureofcode_wpf
 {
@@ -33,7 +34,7 @@ namespace natureofcode_wpf
             if (!animated)
             {
                 animated = true;
-                scenario = new ScenarioPointingDirectionMotion(canvas); // <---- Scenario
+                scenario = new ScenarioPolarToCartesian(canvas); // <---- Scenario
                 this.Title = $"Nature of code [{scenario.GetTitle()}]";
                 scenario?.Setup();
                 await Loop();
