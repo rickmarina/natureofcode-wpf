@@ -34,7 +34,7 @@ namespace natureofcode_wpf
             if (!animated)
             {
                 animated = true;
-                scenario = new ScenarioPolarToCartesian(canvas); // <---- Scenario
+                scenario = new ScenarioSpiral(canvas); // <---- Scenario
                 this.Title = $"Nature of code [{scenario.GetTitle()}]";
                 scenario?.Setup();
                 await Loop();
