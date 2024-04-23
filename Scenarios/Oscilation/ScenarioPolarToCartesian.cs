@@ -1,4 +1,6 @@
-﻿using System;
+﻿using natureofcode_wpf.Utils;
+using System;
+using System.Numerics;
 using System.Windows.Controls;
 using System.Windows.Shapes;
 
@@ -10,13 +12,13 @@ namespace natureofcode_wpf.Scenarios.Oscilation
 
         Line line;
         Ellipse circle; 
-        double r;
+        float r;
         double theta; 
 
         public ScenarioPolarToCartesian(Canvas canvas) : base(canvas, "Polar To Cartesian")
         {
 
-            r = _height * 0.35;
+            r = _height * 0.35f;
             theta = 0; 
 
             line = new Line()
@@ -51,18 +53,14 @@ namespace natureofcode_wpf.Scenarios.Oscilation
 
         public override void Update(long delta)
         {
+            var v = Vector2.Multiply(Degrees.FromAngle(theta), r);
+            
+            line.X2 = v.X; line.Y2 = v.Y;
 
-            double x = r * Math.Cos(theta);
-            double y = r * Math.Sin(theta);
+            Canvas.SetTop(circle, v.Y - (circle.Height / 2));
+            Canvas.SetLeft(circle,v.X - (circle.Width / 2));
 
-            line.X2 = x; line.Y2 = y;
-
-            Canvas.SetTop(circle, y - (circle.Height / 2));
-            Canvas.SetLeft(circle,x - (circle.Width / 2));
-
-
-
-            theta += 0.02;
+            theta = (theta + 0.02) % (Math.PI*2);
 
         }
     }

@@ -31,5 +31,6 @@ namespace natureofcode_wpf.Utils
         }
 
         public static double Heading(this Vector2 v) => Math.Atan2(v.Y, v.X);
+
     }
 }
