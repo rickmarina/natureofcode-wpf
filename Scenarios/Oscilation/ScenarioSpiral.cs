@@ -1,5 +1,6 @@
 ﻿using natureofcode_wpf.Utils;
 using System;
+using System.Diagnostics;
 using System.Numerics;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,7 +22,7 @@ namespace natureofcode_wpf.Scenarios.Oscilation
         public ScenarioSpiral(Canvas canvas) : base(canvas, "Spiral")
         {
             pline.Points.Add(new Point(0, 0));
-            r = 1;
+            r = 0;
             theta = 0; 
 
         }
@@ -37,10 +38,12 @@ namespace natureofcode_wpf.Scenarios.Oscilation
         public override void Update(long delta)
         {
             var v = Vector2.Multiply(Degrees.FromAngle(theta), r);
-            
-            pline.Points.Add(new Point(v.X, v.Y));
 
-            theta = theta + 0.02;
+            pline.Points.Add(new Point(v.X, v.Y));
+            //pline.Points.Add(new Point(v.X, -1*v.Y)); spiral counterclockwise 
+            // In canvas y axis increases downwards
+
+            theta += 0.02;
             r += 0.05f;
 
         }
