@@ -1,7 +1,9 @@
 ﻿using NatureOfCode.Models;
 using natureofcode_wpf.Models;
 using System;
+using System.Diagnostics;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 public abstract class ScenarioBase : IScenario
@@ -16,7 +18,10 @@ public abstract class ScenarioBase : IScenario
     protected bool mouseMove = false;
     protected bool mouseDragg = false; 
     protected double mouseX;
-    protected double mouseY; 
+    protected double mouseY;
+
+    protected Key keyDown;
+    protected Key keyUp;
 
     public ScenarioBase(Canvas canvas, string title)
     {
@@ -28,9 +33,24 @@ public abstract class ScenarioBase : IScenario
 
         this._title = title;
 
+        
         this._canvas.MouseLeftButtonDown += _canvas_MouseLeftButtonDown;
         this._canvas.MouseLeftButtonUp += _canvas_MouseLeftButtonUp;
         this._canvas.MouseMove += _canvas_MouseMove;
+        this._canvas.KeyDown += _canvas_KeyDown;
+        this._canvas.KeyUp += _canvas_KeyUp;
+    }
+
+    private void _canvas_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+    {
+        keyUp = Key.None;
+        keyDown = e.Key;
+    }
+
+    private void _canvas_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+    {
+        keyDown = Key.None;
+        keyUp = e.Key;
     }
 
     private void _canvas_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)

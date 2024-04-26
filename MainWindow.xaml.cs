@@ -30,11 +30,13 @@ namespace natureofcode_wpf
         private async void bStartAnimation_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine($"Setup animation..");
+            canvas.Focusable = true;
+            canvas.Focus();
 
             if (!animated)
             {
                 animated = true;
-                scenario = new ScenarioSpiral(canvas); // <---- Scenario
+                scenario = new ScenarioAsteroids(canvas); // <---- Scenario
                 this.Title = $"Nature of code [{scenario.GetTitle()}]";
                 scenario?.Setup();
                 await Loop();
@@ -96,6 +98,5 @@ namespace natureofcode_wpf
             }
         }
 
-        
     }
 }

@@ -19,6 +19,6 @@
             <Label Name="fpsValue" Content="-"/>
         </StackPanel>
 
-        <Canvas Grid.Row="1" x:Name="canvas" Loaded="canvas_Loaded" ClipToBounds="False" Background="Transparent"></Canvas>
+        <Canvas Grid.Row="1" x:Name="canvas" Loaded="canvas_Loaded" ClipToBounds="False" Background="Transparent" Focusable="true"></Canvas>
     </Grid>
 </Window>

@@ -9,7 +9,7 @@ namespace natureofcode_wpf.Models;
 public class Mover
 {
     public const float G = 1.0f;
-    private float mass; 
+    private float mass;
     private Vector2 position;
     private Vector2 velocity;
     private Vector2 acceleration;
@@ -18,11 +18,13 @@ public class Mover
     private double angleVelocity = 0;
     private double angleAcceleration = 0;
 
-    public float topVelocity { get; set; } = float.MaxValue; 
+    public float damping { get; set; } = 1;
 
-    public Shape shape { get; private set; } 
+    public float topVelocity { get; set; } = float.MaxValue;
 
-    public Mover(float x, float y, float mass, Shape shape) { 
+    public Shape shape { get; private set; }
+
+    public Mover(float x, float y, float mass, Shape shape) {
         this.position = new Vector2(x, y);
         this.velocity = new Vector2(0, 0);
         this.acceleration = new Vector2(0, 0);
@@ -36,9 +38,16 @@ public class Mover
     }
 
     public float GetMass => this.mass;
+    public double GetAngle => this.angle;
     public Vector2 Position => this.position;
     public Vector2 Velocity => this.velocity;
     public Vector2 Acceleration => this.acceleration;
+
+    public void StopAngleRotation() {
+        angleAcceleration = 0;
+        angleVelocity = 0;
+
+    }
 
     public void ApplyForce(Vector2 force) => this.acceleration = Vector2.Add(acceleration, Vector2.Divide(force, mass));
     public void ApplyAngularAcceleration(double a) => this.angleAcceleration = a;
@@ -59,6 +68,9 @@ public class Mover
     public void Update()
     {
         this.velocity = Vector2.Add(this.velocity, this.acceleration);
+        if (damping != 1)
+            this.velocity = Vector2.Multiply(this.velocity, damping);
+
         this.velocity.Limit(topVelocity); 
 
         this.position = Vector2.Add(this.position, this.velocity);
