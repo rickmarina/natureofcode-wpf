@@ -1,14 +1,9 @@
 ﻿using natureofcode_wpf.Models;
 using natureofcode_wpf.Utils;
 using System;
-using System.DirectoryServices.ActiveDirectory;
 using System.Numerics;
-using System.Threading;
-using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Converters;
-using System.Windows.Shapes;
 
 
 namespace natureofcode_wpf.Scenarios.Oscilation
